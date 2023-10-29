@@ -29,7 +29,7 @@ const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {tabs.map(tab => (
-            <Route key={tab.id} path={`/${tab.id}`} element={<TabContent path={tab.path} obj={tab} />} />
+            <Route key={tab.id} path={`/${tab.id}`} element={<TabContent tabId={tab.path} obj={tab} />} />
           ))}
           {tabs.length > 0 && <Route path="/" element={<Navigate to={`/${tabs[0].id}`} />} />}
         </Routes>
@@ -38,18 +38,27 @@ const App = () => {
   );
 };
 
-function TabContent({ path, obj }) {
+function TabContent({ tabId, obj }) {
   let LazyComponent = null;
+  const formattedInfo = Object.keys(obj)
+    .map(key => `${key}: ${obj[key]}`)
+    .join('\n');
 
-  if (path === 'tabs/dummyChart.js') {
-    LazyComponent = LazyDummyChart;
-  } else if (path === 'tabs/dummyList.js') {
-    LazyComponent = LazyDummyList;
-  } else if (path === 'tabs/dummyTable.js') {
-    LazyComponent = LazyDummyTable;
+  switch (tabId) {
+    case 'tabs/dummyChart.js':
+      LazyComponent = LazyDummyChart;
+      break;
+    case 'tabs/dummyList.js':
+      LazyComponent = LazyDummyList;
+      break;
+    case 'tabs/dummyTable.js':
+      LazyComponent = LazyDummyTable;
+      break;
+    default:
+      return null;
   }
 
-  return <LazyComponent obj={obj} />;
+  return <LazyComponent formattedInfo={formattedInfo} />;
 }
 
 export default App;

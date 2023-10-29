@@ -1,10 +1,6 @@
 import React from 'react';
 
-const DummyTable = ({ obj }) => {
-  const formattedInfo = Object.keys(obj)
-    .map(key => `${key}: ${obj[key]}`)
-    .join('\n');
-
+const DummyTable = ({ formattedInfo }) => {
   return (
     <div>{formattedInfo}</div>
   );

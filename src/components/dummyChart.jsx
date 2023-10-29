@@ -1,10 +1,6 @@
 import React from 'react';
 
-const DummyChart = ({ obj }) => {
-  const formattedInfo = Object.keys(obj)
-    .map(key => `${key}: ${obj[key]}`)
-    .join('\n');
-
+const DummyChart = ({ formattedInfo }) => {
   return (
     <div>{formattedInfo}</div>
   );
