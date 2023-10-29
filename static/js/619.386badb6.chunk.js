@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkbackendless_task=self.webpackChunkbackendless_task||[]).push([[619],{619:function(e,s,n){n.r(s);n(791);var a=n(184);s.default=function(e){var s=e.formattedInfo;return(0,a.jsx)("div",{children:s})}}}]);
+//# sourceMappingURL=619.386badb6.chunk.js.map
